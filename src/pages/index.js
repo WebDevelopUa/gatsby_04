@@ -14,7 +14,7 @@ import SEO from "../components/seo"
 const HomePage = () => {
   return (
     <Layout>
-      <h2>home page</h2>
+      <Hero />
     </Layout>
   )
 }

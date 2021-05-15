@@ -1,16 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 
-const Footer = () => {
-  return (
-    <Wrapper>
-      <p>
-        &copy; {new Date().getFullYear()} John Smilga. All rights reserved.
-        Built with Gatsby
-      </p>
-    </Wrapper>
-  )
-}
+const Footer = () => (
+  <Wrapper>
+    <p>
+      &copy; {new Date().getFullYear()} Gatsby v3.5 & Airtable
+    </p>
+  </Wrapper>
+)
+
 const Wrapper = styled.footer`
   height: 5rem;
   display: grid;

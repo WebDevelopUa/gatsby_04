@@ -31,6 +31,7 @@
 - [Inkscape](https://inkscape.org/release/inkscape-1.0.2/)
 - [Adalo no code app builder](https://www.adalo.com) [help](https://help.adalo.com)
 - [Airtable.js](https://www.npmjs.com/package/airtable)
+- [gatsby-background-image](https://www.gatsbyjs.com/plugins/gatsby-background-image/)
 
 ---
 
@@ -63,6 +64,30 @@ gatsby develop
 
 - [localhost:8000](http://localhost:8000)
 - [localhost:8000/\_\_\_graphql](http://localhost:8000/___graphql)
+
+---
+
+## Background Image on Homepage
+
+[gatsby-background-image](https://www.gatsbyjs.com/plugins/gatsby-background-image/)
+
+Get background image from `images` folder using GraphQL query
+
+```
+const query = graphql`
+  {
+    file(relativePath: {eq: "slider-bg.jpg"}) {
+      childImageSharp {
+        fluid {
+          src
+        }
+      }
+    }
+  }
+`
+```
+
+Paste it to [`<Background/>` component](src/components/Background.js)
 
 ---
 
