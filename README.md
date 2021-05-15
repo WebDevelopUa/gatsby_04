@@ -67,6 +67,20 @@ gatsby develop
 
 ---
 
+## Global styles
+
+with styled-components (without using [global.css](src/components/global.css)) are in [`root-wrapper.js`](root-wrapper.js) file
+
+wrapped in rootElement
+```jsx
+export const wrapRootElement = ({ element }) => (
+  <>
+    <GlobalStyle />
+    {element}
+  </>
+)
+```
+
 ## Background Image on Homepage
 
 [gatsby-background-image](https://www.gatsbyjs.com/plugins/gatsby-background-image/)

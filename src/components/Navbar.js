@@ -5,9 +5,33 @@ import { GoThreeBars } from "react-icons/go"
 import { Link } from "gatsby"
 import NavLink from "./NavLink"
 
-const Navbar = () => {
-  return <h2>navbar component</h2>
-}
+const Navbar = () => (
+  <Wrapper>
+    <div className="nav-center">
+      <div className="nav-header">
+        <Link to={`/`}>
+          <img src={logo} alt="logo" />
+        </Link>
+
+        <button className="toggle-btn">
+          <GoThreeBars />
+        </button>
+
+        <ul className="nav-links">
+          <li>
+            <button>products</button>
+          </li>
+          <li>
+            <button>developers</button>
+          </li>
+          <li>
+            <button>company</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Wrapper>
+)
 
 const Wrapper = styled.nav`
   position: relative;
@@ -31,6 +55,7 @@ const Wrapper = styled.nav`
 
     img {
       width: auto;
+      height: 25px;
     }
 
     .toggle-btn {
