@@ -40,6 +40,7 @@ Requirements:
 - [Node.js](https://nodejs.org/uk/)
 - [Netlify](https://www.netlify.com)
 - [Airtable.js](https://www.npmjs.com/package/airtable)
+- [Airtable](https://airtable.com) - Headless CMS
 
 ---
 
@@ -72,6 +73,7 @@ gatsby develop
 with styled-components (without using [global.css](src/components/global.css)) are in [`root-wrapper.js`](root-wrapper.js) file
 
 wrapped in rootElement
+
 ```jsx
 export const wrapRootElement = ({ element }) => (
   <>
@@ -102,6 +104,58 @@ const query = graphql`
 ```
 
 Paste it to [`<Background/>` component](src/components/Background.js)
+
+---
+
+# [Airtable](https://airtable.com) - Headless CMS
+
+- [Free plan](https://airtable.com/pricing) includes
+
+  - Unlimited bases
+  - 1,200 records per base
+  - 2GB of attachments per base
+  - Grid, calendar, kanban, form, & gallery views
+
+- Add a workspace
+- Create Base => Grid view => rename columns to lowercase => create new table => [ProjectsSection](src/constants/dataTable-ProjectsSection.csv):
+
+  | name               |                        image                         |                      type                       |    date    |
+  | :----------------- | :--------------------------------------------------: | :---------------------------------------------: | :--------: |
+  | (single line text) |                     (attachment)                     | (single select): - bathroom - bedroom - kitchen |   (date)   |
+  | modern kitchen     |  ![kitchen-1](src/images/temp-images/kitchen-1.png)  |                     kitchen                     | 05/10/2021 |
+  | outside bathroom   | ![bathroom-1](src/images/temp-images/bathroom-1.png) |                    bathroom                     | 01/01/2021 |
+  | comfy bedroom      |  ![bedroom-1](src/images/temp-images/bedroom-1.png)  |                     bedroom                     | 10/10/2020 |
+  | vintage kitchen    |  ![kitchen-2](src/images/temp-images/kitchen-2.png)  |                     kitchen                     | 01/05/2020 |
+  | classic bathroom   | ![bathroom-2](src/images/temp-images/bathroom-1.png) |                    bathroom                     | 05/10/2020 |
+  | retro bathroom     | ![bathroom-3](src/images/temp-images/bathroom-3.png) |                    bathroom                     | 15/10/2020 |
+
+- Help => API Documentation => INTRODUCTION => The ID of this base is `appScClgH*******`
+- Account => Generate API key => `keyYnbZx*********` => copy / paste to `.env.development` & `.env.production`:
+
+```
+GATSBY_AIRTABLE_API=keyYnbZxCJ****
+
+GATSBY_AIRTABLE_BASE_ID=appScClgH****
+```
+
+- add code to [gatsby-config.js](gatsby-config.js):
+
+```
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.GATSBY_AIRTABLE_API,
+        concurrency: 5,
+        tables: [
+          {
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+            tableName: `ProjectsSection`,
+            mapping: { image: `fileNode` },
+          },
+        ],
+      },
+    },
+```
 
 ---
 
@@ -136,3 +190,7 @@ Paste it to [`<Background/>` component](src/components/Background.js)
 > gatsby-source-airtable \*
 > Depends on vulnerable versions of airtable
 > node_modules/gatsby-source-airtable
+
+---
+
+# Hopefully everything is clear & You'll be good to go
