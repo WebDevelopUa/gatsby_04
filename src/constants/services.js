@@ -11,24 +11,24 @@ export default [
     id: 1,
     icon: <GiCompass className="icon" />,
     label: "mission",
-    text: " Activated charcoal post-ironic unicorn flexitarian tumeric, direct trade man bun mumblecore kickstarter art party. ",
+    text: "Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators.",
   },
   {
     id: 2,
     icon: <GiDiamondHard className="icon" />,
     label: "vision",
-    text: " Brooklyn mustache polaroid neutra. Wolf subway tile gluten-free bushwick, godard letterpress pitchfork direct trade put a bird on",
+    text: "For science, music, sport, etc, Europe uses the same vocabulary.",
   },
   {
     id: 3,
     icon: <GiStabbedNote className="icon" />,
     label: "history",
-    text: "Chia pinterest locavore letterpress tote bag. Subway tile PBR&B knausgaard locavore quinoa four loko disrupt photo booth hella.",
+    text: "The European languages are members of the same family. Their separate existence is a myth.",
   },
   {
     id: 4,
     icon: <GiBriefcase className="icon" />,
     label: "work",
-    text: "Man braid banh mi prism disrupt hella cray mlkshk jean shorts typewriter synth salvia direct trade pabst knausgaard.",
+    text: "To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.",
   },
 ]
