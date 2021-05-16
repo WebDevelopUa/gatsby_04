@@ -126,7 +126,7 @@ Paste it to [`<Background/>` component](src/components/Background.js)
   | outside bathroom   | ![bathroom-1](src/images/temp-images/bathroom-1.png) |                    bathroom                     | 01/01/2021 |
   | comfy bedroom      |  ![bedroom-1](src/images/temp-images/bedroom-1.png)  |                     bedroom                     | 10/10/2020 |
   | vintage kitchen    |  ![kitchen-2](src/images/temp-images/kitchen-2.png)  |                     kitchen                     | 01/05/2020 |
-  | classic bathroom   | ![bathroom-2](src/images/temp-images/bathroom-1.png) |                    bathroom                     | 05/10/2020 |
+  | classic bathroom   | ![bathroom-2](src/images/temp-images/bathroom-2.png) |                    bathroom                     | 05/10/2020 |
   | retro bathroom     | ![bathroom-3](src/images/temp-images/bathroom-3.png) |                    bathroom                     | 15/10/2020 |
 
 - Help => API Documentation => INTRODUCTION => The ID of this base is `appScClgH*******`
