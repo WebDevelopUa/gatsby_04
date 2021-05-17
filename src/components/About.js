@@ -3,9 +3,9 @@ import styled from "styled-components"
 import Title from "./Title"
 import services from "../constants/services"
 
-const About = () => (
+const About = ({ title }) => (
   <Wrapper className="section">
-    <Title title="About Section" />
+    <Title title={title || `About section`} />
     <div className="section-center">
       {services.map(({ id, icon, label, text }) => (
         <article key={id}>

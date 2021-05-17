@@ -157,6 +157,38 @@ GATSBY_AIRTABLE_BASE_ID=appScClgH****
     },
 ```
 
+- generate GraphQL query:
+
+```
+export const query = graphql`
+  {
+    allAirtable(
+      filter: {table: {eq: "ProjectsSection"}}
+      limit: 3
+      sort: {fields: data___date, order: DESC}
+    ) {
+      nodes {
+        id
+        data {
+          date
+          name
+          type
+          image {
+            localFiles {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+```
+
 ---
 
 > Delete package-lock.json before npm update
