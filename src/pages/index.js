@@ -45,12 +45,14 @@ const HomePage = ({ data }) => {
   } = data
   const aboutTitle = `About section`
   const projectsTitle = `Latest projects section`
+  const sliderTitle = `Reviews section`
 
   return (
     <Layout>
       <Hero />
       <About title={aboutTitle} />
       <Projects projects={projects} title={projectsTitle} />
+      <Slider title={sliderTitle} />
     </Layout>
   )
 }

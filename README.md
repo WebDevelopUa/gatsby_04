@@ -32,6 +32,7 @@
 - [Adalo no code app builder](https://www.adalo.com) [help](https://help.adalo.com)
 - [Airtable.js](https://www.npmjs.com/package/airtable)
 - [gatsby-background-image](https://www.gatsbyjs.com/plugins/gatsby-background-image/)
+- [Tables Generator: LaTeX HTML Text Markdown](https://www.tablesgenerator.com/markdown_tables)
 
 ---
 
@@ -188,6 +189,70 @@ export const query = graphql`
   }
 `
 ```
+
+- render [Projects](src/components/Projects.js) component
+
+---
+
+- Create Base => Grid view => rename columns to lowercase => create new table => [ReviewSection](src/constants/dataTable-ReviewSection.csv):
+
+| name      |                      image                       | quote                                                                                                                                                       | title  |
+| :-------- | :----------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| Mr. Dog   | ![person-1](src/images/temp-images/person-1.jpg) | We have two lives, and the second begins when we realize we only have one. - Confucius                                                                      | Senior |
+| Doggy Dog | ![person-2](src/images/temp-images/person-2.jpg) | Words are, in my not-so-humble opinion, our most inexhaustible source of magic. Capable of both inflicting injury, and remedying it. - Professor Dumbledore | Middle |
+| True Dog  | ![person-3](src/images/temp-images/person-3.jpg) | It is impossible to begin to learn that which one thinks one already knows. - Epictetus                                                                     | Junior |
+
+- add code to [gatsby-config.js](gatsby-config.js):
+- generate GraphQL query:
+
+```
+{
+  resolve: `gatsby-source-airtable`,
+  options: {
+    apiKey: process.env.GATSBY_AIRTABLE_API,
+    concurrency: 5,
+    tables: [
+      {
+        baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+        tableName: `ProjectsSection`,
+        mapping: { image: `fileNode` },
+      },
+      {
+        baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+        tableName: `ReviewSection`,
+        mapping: { image: `fileNode` },
+      },
+    ],
+  },
+},
+```
+
+```
+const query = graphql`
+  {
+    allAirtable(filter: { table: { eq: "ReviewSection" } }) {
+      nodes {
+        data {
+          title
+          name
+          image {
+            localFiles {
+              childImageSharp {
+                fixed(width: 150, height: 150) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
+          quote
+        }
+      }
+    }
+  }
+`
+```
+
+- render [Slider](src/components/Slider.js) component
 
 ---
 
