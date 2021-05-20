@@ -1,20 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
 import Background from "./Background"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi"
 
-const Hero = () => (
-  <Wrapper>
-    <Background>
-      <article>
-        <h3>Hero component text</h3>
-        <h1>Hi there!</h1>
-        <Link to={`/projects`}>Projects</Link>
-      </article>
-    </Background>
-  </Wrapper>
-)
+const Hero = ({ projects }) => {
+  const imagesAirtable = projects.map(item => {
+    const {
+      data: {
+        image: { localFiles },
+      },
+    } = item
+    return localFiles[0].childImageSharp.fluid
+  })
+
+  return (
+    <Wrapper>
+      <Background image={imagesAirtable[2]}>
+        <article>
+          <h3>Hero component text</h3>
+          <h1>Hi there!</h1>
+          <Link to={`/projects`}>Projects</Link>
+        </article>
+      </Background>
+    </Wrapper>
+  )
+}
 
 const Wrapper = styled.section`
   article {

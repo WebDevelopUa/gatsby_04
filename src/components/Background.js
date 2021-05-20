@@ -15,7 +15,7 @@ const query = graphql`
   }
 `
 
-const Background = ({ children }) => {
+const Background = ({ children, image }) => {
   const data = useStaticQuery(query)
   const dataImage = data.file.childImageSharp.fluid
 
@@ -23,7 +23,7 @@ const Background = ({ children }) => {
     <Wrapper>
       <BackgroundImage
         Tag="div"
-        fluid={dataImage}
+        fluid={image || dataImage}
         className="bcg"
         preserveStackingContext={true}
       >

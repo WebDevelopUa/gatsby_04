@@ -256,6 +256,13 @@ const query = graphql`
 
 ---
 
+## Hero Slider
+
+We pass Airtable images like in The Latest Projects Section to [Hero](src/components/Hero.js) component =>
+[Background](src/components/Background.js) component instead of Local background image file
+
+---
+
 > Delete package-lock.json before npm update
 
 # Errors
