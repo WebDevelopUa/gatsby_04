@@ -263,6 +263,24 @@ We pass Airtable images like in The Latest Projects Section to [Hero](src/compon
 
 ---
 
+## Survey section
+
+Requires [Airtable.js](https://www.npmjs.com/package/airtable) package 
+
+Dynamically rendered data (fetch the data when [Survey](src/components/Survey.js) component renders ), updated from Airtable Backend:
+
+- Create Base => Grid view => rename columns to lowercase => create new table => [SurveySection](src/constants/dataTable-SurveySection.csv):
+
+| name     | votes |
+| :------- | :---: |
+| kitchen  |  10   |
+| bathroom |  50   |
+| bedroom  |   5   |
+
+
+
+---
+
 > Delete package-lock.json before npm update
 
 # Errors

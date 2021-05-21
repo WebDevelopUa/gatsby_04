@@ -5,6 +5,29 @@ import base from "./Airtable"
 import { FaVoteYea } from "react-icons/fa"
 
 const Survey = () => {
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const getRecords = async () => {
+    const records = await base(`SurveySection`)
+      .select({})
+      .firstPage()
+      .catch(err => console.log(err))
+
+    const newItems = records.map(record => {
+      const { id, fields } = record
+      return { id, fields }
+    })
+
+    setItems(newItems)
+    setLoading(false)
+  }
+  useEffect(() => {
+    getRecords()
+  }, [])
+
+  console.log(items)
+
   return <h2>survey component</h2>
 }
 
