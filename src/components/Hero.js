@@ -38,6 +38,15 @@ const Hero = ({ projects }) => {
         <button className="next-btn" onClick={() => setIndex(index + 1)}>
           <FiChevronRight />
         </button>
+        <div className="dots">
+          {imagesAirtable.map((_, btnIndex) => (
+            <span
+              key={btnIndex}
+              onClick={() => setIndex(btnIndex)}
+              className={index === btnIndex ? `active` : undefined}
+            />
+          ))}
+        </div>
       </Background>
     </Wrapper>
   )
