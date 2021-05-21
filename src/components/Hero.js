@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import Background from "./Background"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi"
 
 const Hero = ({ projects }) => {
   const imagesAirtable = projects.map(item => {
@@ -12,15 +13,31 @@ const Hero = ({ projects }) => {
     } = item
     return localFiles[0].childImageSharp.fluid
   })
+  const [index, setIndex] = React.useState(0)
+  React.useEffect(() => {
+    const lastIndex = imagesAirtable.length - 1
+    if (index < 0) {
+      setIndex(lastIndex)
+    }
+    if (index > lastIndex) {
+      setIndex(0)
+    }
+  }, [index, imagesAirtable])
 
   return (
     <Wrapper>
-      <Background image={imagesAirtable[2]}>
+      <Background image={imagesAirtable[index]}>
         <article>
           <h3>Hero component text</h3>
           <h1>Hi there!</h1>
           <Link to={`/projects`}>Projects</Link>
         </article>
+        <button className="prev-btn" onClick={() => setIndex(index - 1)}>
+          <FiChevronLeft />
+        </button>
+        <button className="next-btn" onClick={() => setIndex(index + 1)}>
+          <FiChevronRight />
+        </button>
       </Background>
     </Wrapper>
   )
