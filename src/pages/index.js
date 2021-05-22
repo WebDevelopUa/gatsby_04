@@ -46,13 +46,14 @@ const HomePage = ({ data }) => {
   const aboutTitle = `About section`
   const projectsTitle = `Latest projects section`
   const sliderTitle = `Reviews section`
+  const surveyTitle = `Survey section`
 
   return (
     <Layout>
       <Hero projects={projects} />
       <About title={aboutTitle} />
       <Projects projects={projects} title={projectsTitle} />
-      <Survey />
+      <Survey title={surveyTitle} />
       <Slider title={sliderTitle} />
     </Layout>
   )

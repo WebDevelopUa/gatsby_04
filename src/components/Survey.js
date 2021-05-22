@@ -4,7 +4,7 @@ import styled from "styled-components"
 import base from "./Airtable"
 import { FaVoteYea } from "react-icons/fa"
 
-const Survey = () => {
+const Survey = ({ title }) => {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -26,9 +26,42 @@ const Survey = () => {
     getRecords()
   }, [])
 
-  console.log(items)
+  // console.log(items)
 
-  return <h2>survey component</h2>
+  return (
+    <Wrapper className="section">
+      <div className="container">
+        <Title title={title || `Survey section`} />
+        <h3>Please vote for the best option</h3>
+        {loading ? (
+          <h3>Loading</h3>
+        ) : (
+          <ul>
+            {items.map(item => {
+              const {
+                id,
+                fields: { name, votes },
+              } = item
+              return (
+                <li key={id}>
+                  <div className="key">
+                    {name.toUpperCase().substring(0, 2)}
+                  </div>
+                  <div>
+                    <h4>{name}</h4>
+                    <p>{votes} votes</p>
+                  </div>
+                  <button onClick={() => console.log(`voted!`)}>
+                    <FaVoteYea />
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+        )}
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
