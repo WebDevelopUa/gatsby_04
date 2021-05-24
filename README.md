@@ -1,14 +1,17 @@
-# GatsbyJS 3.5 (Static site generator) + Airtable
+# GatsbyJS 3.5 (Static site generator) + Airtable + Algolia Search
 
-### Pet-project website built with Gatsby v3.5 & Airtable
+### Pet-project website built with Gatsby v3.5 & Airtable Backend & Algolia Search
 
-## [DEMO link of Frontend](https://xxx.netlify.app/) deployed on Netlify
+## [DEMO link of Frontend](https://gatsby-v3-airtable.netlify.app) deployed on Netlify
 
 - Image From External (CDN) Media Storage At [Cloudinary](https://cloudinary.com/)
 - Backend for Content => [GitHub repo](https://github.com/...)
-- [Frontend](https://xxxxxx.netlify.app) deployed on Netlify => `public` folder
+- [Frontend](https://gatsby-v3-airtable.netlify.app) deployed on Netlify => `public` folder
 
-> [localhost:8000](http://localhost:8000) version of Frontend requires [localhost:1337](http://localhost:1337) => run Backend: [Back-end GitHub repo](https://github.com/WebDevelopUa/xxx)
+> [localhost:8000](http://localhost:8000) version of Frontend requires:
+>
+> - [Airtable](https://airtable.com/) Backend
+> - [Algolia](https://www.algolia.com/) Backend
 
 ---
 
@@ -388,6 +391,21 @@ gatsby clean && gatsby build
   </form>
 </div>
 ```
+
+---
+
+# Deploy
+
+> API key is required to connect to Airtable
+
+[Netlify](https://app.netlify.com/sites) => Deploy Settings => Continuous Deployment => Environment => Environment variables => Edit variables:
+
+- GATSBY_AIRTABLE_API=keyYn**\*\*\*\***
+- GATSBY_AIRTABLE_BASE_ID=appSc**\*\*\*\***
+- GATSBY_ALGOLIA_INDEX_NAME=ProjectsPageSearch
+- GATSBY_ALGOLIA_APP_ID=DQVJ7**\*\*\*\***
+- GATSBY_ALGOLIA_SEARCH_KEY=3a82e752**\*\*\*\***
+- GATSBY_ALGOLIA_ADMIN_KEY=3b4a8aa28**\*\*\*\***
 
 ---
 

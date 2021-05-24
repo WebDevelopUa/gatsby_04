@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const SearchButtons = ({ projects, setProjects, setBackToAll }) => {
-  const [index, setIndex] = React.useState(2)
+  const [index, setIndex] = React.useState(0)
   const types = ["all", ...new Set(projects.map(project => project.data.type))]
 
   const showProjects = (type, typeIndex) => {
