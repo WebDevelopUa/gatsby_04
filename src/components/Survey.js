@@ -26,7 +26,31 @@ const Survey = ({ title }) => {
     getRecords()
   }, [])
 
-  // console.log(items)
+  const giveVote = async id => {
+    setLoading(true)
+
+    const tempItems = [...items].map(item => {
+      if (item.id === id) {
+        let { id, fields } = item
+        fields = { ...fields, votes: fields.votes + 1 }
+        return { id, fields }
+      } else {
+        return item
+      }
+    })
+
+    const records = await base(`SurveySection`)
+      .update(tempItems)
+      .catch(err => console.log(err))
+
+    const newItems = records.map(record => {
+      const { id, fields } = record
+      return { id, fields }
+    })
+
+    setItems(newItems)
+    setLoading(false)
+  }
 
   return (
     <Wrapper className="section">
@@ -51,7 +75,7 @@ const Survey = ({ title }) => {
                     <h4>{name}</h4>
                     <p>{votes} votes</p>
                   </div>
-                  <button onClick={() => console.log(`voted!`)}>
+                  <button onClick={() => giveVote(id)}>
                     <FaVoteYea />
                   </button>
                 </li>
