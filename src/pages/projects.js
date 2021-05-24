@@ -3,8 +3,43 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 import { Layout, Projects, Algolia } from "../components"
 
-const ProjectsPage = () => {
-  return <h2>projects page</h2>
+export const query = graphql`
+  {
+    allAirtable(filter: { table: { eq: "ProjectsSection" } }) {
+      nodes {
+        id
+        data {
+          type
+          name
+          date
+          image {
+            localFiles {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+const ProjectsPage = ({ data }) => {
+  const pageTitle = `Projects page`
+  const {
+    allAirtable: { nodes: projects },
+  } = data
+
+  return (
+    <Wrapper>
+      <Layout>
+        <Projects title={pageTitle} projects={projects} page />
+      </Layout>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.main`
