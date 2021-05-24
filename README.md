@@ -33,15 +33,19 @@
 - [Airtable.js](https://www.npmjs.com/package/airtable)
 - [gatsby-background-image](https://www.gatsbyjs.com/plugins/gatsby-background-image/)
 - [Tables Generator: LaTeX HTML Text Markdown](https://www.tablesgenerator.com/markdown_tables)
+- [Adding Search with Algolia](https://www.gatsbyjs.com/docs/adding-search-with-algolia/)
+- [Gatsby plugin Algolia](https://www.gatsbyjs.com/plugins/gatsby-plugin-algolia-search/)
+- [Algolia InstantSearch.js Widgets](https://www.algolia.com/doc/api-reference/widgets/js/)
 
 ---
 
 Requirements:
 
-- [Node.js](https://nodejs.org/uk/)
-- [Netlify](https://www.netlify.com)
+- [Node.js](https://nodejs.org/uk/) -development
+- [Airtable](https://airtable.com) - Headless CMS (for data storage)
 - [Airtable.js](https://www.npmjs.com/package/airtable)
-- [Airtable](https://airtable.com) - Headless CMS
+- [Algolia](https://www.algolia.com/) - Search & Discovery platform (for input field search)
+- [Netlify](https://www.netlify.com) - static site deployment
 
 ---
 
@@ -265,7 +269,7 @@ We pass Airtable images like in The Latest Projects Section to [Hero](src/compon
 
 ## Survey section
 
-Requires [Airtable.js](https://www.npmjs.com/package/airtable) package 
+Requires [Airtable.js](https://www.npmjs.com/package/airtable) package
 
 Dynamically rendered data (fetch the data when [Survey](src/components/Survey.js) component renders ), updated from Airtable Backend:
 
@@ -277,11 +281,117 @@ Dynamically rendered data (fetch the data when [Survey](src/components/Survey.js
 | bathroom |  50   |
 | bedroom  |   5   |
 
+---
 
+# [ALGOLIA](https://www.algolia.com/) - the flexible AI-powered Search & Discovery platform
+
+- [Free plan](https://www.algolia.com/account/plan/) includes
+
+  - UP TO 10 UNITS / MONTH
+  - The Free Plan requires you to display the Algolia logo next to the search results.
+  - [Documentation](https://www.algolia.com/doc/)
+
+- Create a new index => `ProjectsPageSearch`
+- Dashboard => Sidebar menu => [API Keys](https://www.algolia.com/apps/********/api-keys/all) => copy / paste to `.env.development` & `.env.production`:
+
+```
+GATSBY_ALGOLIA_INDEX_NAME=ProjectsPageSearch
+GATSBY_ALGOLIA_APP_ID=DQVJ*******
+GATSBY_ALGOLIA_SEARCH_KEY=3a82e752***********
+GATSBY_ALGOLIA_ADMIN_KEY=3b4a8aa28***********
+```
+
+- Setup [gatsby-config.js](gatsby-config.js):
+
+```
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        queries: queries: require("./src/constants/algolia"),
+        chunkSize: 10000,
+      },
+    },
+```
+
+- Run (will push the data from [query](src/constants/algolia.js) to [Algolia](https://www.algolia.com/apps/*******/explorer/browse/ProjectsPageSearch)):
+
+```
+gatsby clean && gatsby build
+```
+
+- Dashboard => Sidebar menu => [Indices](https://www.algolia.com/apps/*******/explorer/indices) => `Your data has been successfully imported. You can use the search bar to consult and manage your records...`
+
+- Create [React InstantSearch](https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/react/) in [Algolia component](src/components/Algolia.js)
+
+- [Algolia InstantSearch.js Widgets](https://www.algolia.com/doc/api-reference/widgets/js/) => [searchBox](https://www.algolia.com/doc/api-reference/widgets/search-box/js/) => HTML Output structure:
+
+```html
+<div class="ais-SearchBox">
+  <form class="ais-SearchBox-form" novalidate>
+    <input
+      class="ais-SearchBox-input"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      placeholder="Search for products"
+      spellcheck="false"
+      maxlength="512"
+      type="search"
+      value=""
+    />
+    <button
+      class="ais-SearchBox-submit"
+      type="submit"
+      title="Submit the search query."
+    >
+      <svg
+        class="ais-SearchBox-submitIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="10"
+        viewBox="0 0 40 40"
+      >
+        ...
+      </svg>
+    </button>
+    <button
+      class="ais-SearchBox-reset"
+      type="reset"
+      title="Clear the search query."
+      hidden
+    >
+      <svg
+        class="ais-SearchBox-resetIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        width="10"
+        height="10"
+      >
+        ...
+      </svg>
+    </button>
+    <span class="ais-SearchBox-loadingIndicator" hidden>
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 38 38"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="#444"
+        class="ais-SearchBox-loadingIcon"
+      >
+        ...
+      </svg>
+    </span>
+  </form>
+</div>
+```
 
 ---
 
-> Delete package-lock.json before npm update
+> Delete [package-lock.json](package-lock.json) before `run npm update`
 
 # Errors
 
