@@ -4,18 +4,18 @@ import {
   Layout,
   Hero,
   About,
-  Projects,
   Survey,
   Slider,
   GridProjects,
 } from "../components"
+// import { Projects } from "../components"
 import SEO from "../components/seo"
 
 export const query = graphql`
   {
     allAirtable(
       filter: { table: { eq: "ProjectsSection" } }
-      limit: 3
+      limit: 4
       sort: { fields: data___date, order: DESC }
     ) {
       nodes {
@@ -52,7 +52,8 @@ const HomePage = ({ data }) => {
     <Layout>
       <Hero projects={projects} />
       <About title={aboutTitle} />
-      <Projects projects={projects} title={projectsTitle} />
+      {/*<Projects projects={projects} title={projectsTitle} />*/}
+      <GridProjects projects={projects} title={projectsTitle} />
       <Survey title={surveyTitle} />
       <Slider title={sliderTitle} />
     </Layout>

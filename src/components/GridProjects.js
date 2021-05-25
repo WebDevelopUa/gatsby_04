@@ -4,8 +4,32 @@ import Image from "gatsby-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-const GridProjects = () => {
-  return <h2>grid projects</h2>
+const GridProjects = ({ title, projects }) => {
+  return (
+    <Wrapper className="section">
+      <Title title={title || `projects`} />
+      <div className="tile-layout">
+        {projects.map((project, index) => {
+          const { id } = project
+          const { name, type } = project.data
+          const fluid = project.data.image.localFiles[0].childImageSharp.fluid
+
+          return (
+            <article key={id} className={`div-${index}`}>
+              <Image fluid={fluid} className="img" />
+              <div className="info">
+                <p>&ndash; {type} &ndash;</p>
+                <h3>{name}</h3>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+      <Link to={`/projects`} className="btn">
+        all projects
+      </Link>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -24,8 +48,6 @@ const Wrapper = styled.section`
     grid-template-rows: 300px 300px;
     grid-auto-rows: 300px;
   }
-
-  /* GOTCHA!!!!! */
 
   .img {
     height: 100%;
