@@ -5,6 +5,7 @@
 
 import React from "react"
 import { createGlobalStyle } from "styled-components"
+import { GatsbyProvider } from "./src/context/context"
 
 const GlobalStyle = createGlobalStyle`
   /*
@@ -196,10 +197,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
 `
-// wrap root element
+// wrap root element, wrap App with GatsbyProvider (Context API) - makes available value of Context in any component
 export const wrapRootElement = ({ element }) => (
   <>
     <GlobalStyle />
-    {element}
+    <GatsbyProvider>{element}</GatsbyProvider>
   </>
 )

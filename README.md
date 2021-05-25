@@ -394,6 +394,37 @@ gatsby clean && gatsby build
 
 ---
 
+# Sidebar with Context API
+
+In Gatsby (unlike React) you need to have [wrapRootElement](root-wrapper.js)
+
+1. create [context](src/context/context.js):
+
+```
+export const GatsbyContext = React.createContext(undefined)
+
+export const GatsbyProvider = ({ children }) => (
+  <GatsbyContext.Provider value={`This is Context value!`}>
+    {children}
+  </GatsbyContext.Provider>
+)
+```
+
+2. pass to [Layout](src/components/layout.js):
+
+```
+import { GatsbyContext } from "../context/context"
+
+export const Layout = ({ children }) => {
+  const data = useContext(GatsbyContext)
+  console.log(data)
+  ...
+}
+
+```
+
+---
+
 # Deploy
 
 > API key is required to connect to Airtable
