@@ -4,9 +4,8 @@
 
 ## [DEMO link of Frontend](https://gatsby-v3-airtable.netlify.app) deployed on Netlify
 
-- Image From External (CDN) Media Storage At [Cloudinary](https://cloudinary.com/)
-- Backend for Content => [GitHub repo](https://github.com/...)
-- [Frontend](https://gatsby-v3-airtable.netlify.app) deployed on Netlify => `public` folder
+- Backend for Content => [Airtable](https://airtable.com/) + [Algolia](https://www.algolia.com/)
+- [Frontend](https://gatsby-v3-airtable.netlify.app) deployed on Netlify => CI/CD
 
 > [localhost:8000](http://localhost:8000) version of Frontend requires:
 >
@@ -44,7 +43,7 @@
 
 Requirements:
 
-- [Node.js](https://nodejs.org/uk/) -development
+- [Node.js](https://nodejs.org/uk/) - development
 - [Airtable](https://airtable.com) - Headless CMS (for data storage)
 - [Airtable.js](https://www.npmjs.com/package/airtable)
 - [Algolia](https://www.algolia.com/) - Search & Discovery platform (for input field search)
@@ -121,7 +120,7 @@ Paste it to [`<Background/>` component](src/components/Background.js)
 
   - Unlimited bases
   - 1,200 records per base
-  - 2GB of attachments per base
+  - 2 GB of attachments per base
   - Grid, calendar, kanban, form, & gallery views
 
 - Add a workspace
