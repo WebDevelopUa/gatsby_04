@@ -6,5 +6,16 @@ import Survey from "./Survey"
 import Slider from "./Slider"
 import Algolia from "./Algolia"
 import GridProjects from "./GridProjects"
+import Seo from "./seo"
 
-export { Layout, Hero, About, Projects, Survey, Slider, Algolia, GridProjects }
+export {
+  Layout,
+  Hero,
+  About,
+  Projects,
+  Survey,
+  Slider,
+  Algolia,
+  GridProjects,
+  Seo,
+}

@@ -7,9 +7,10 @@ import {
   Survey,
   Slider,
   GridProjects,
+  Seo,
 } from "../components"
+
 // import { Projects } from "../components"
-import SEO from "../components/seo"
 
 export const query = graphql`
   {
@@ -43,6 +44,7 @@ const HomePage = ({ data }) => {
   const {
     allAirtable: { nodes: projects },
   } = data
+  const pageTitle = `Homepage`
   const aboutTitle = `About section`
   const projectsTitle = `Latest projects section`
   const sliderTitle = `Reviews section`
@@ -50,6 +52,7 @@ const HomePage = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title={pageTitle} />
       <Hero projects={projects} />
       <About title={aboutTitle} />
       {/*<Projects projects={projects} title={projectsTitle} />*/}

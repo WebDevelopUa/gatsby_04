@@ -1,12 +1,14 @@
 import React from "react"
-import { Layout } from "../../components"
+import { Layout, Seo } from "../../components"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
 const Connect = props => {
+  const pageTitle = `Connect page`
   const path = props.location.pathname.slice(1)
   return (
     <Layout>
+      <Seo title={pageTitle} />
       <Wrapper>
         <div>
           <h1>{path}</h1>

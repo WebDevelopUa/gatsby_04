@@ -38,6 +38,10 @@
 - [Adding Search with Algolia](https://www.gatsbyjs.com/docs/adding-search-with-algolia/)
 - [Gatsby plugin Algolia](https://www.gatsbyjs.com/plugins/gatsby-plugin-algolia-search/)
 - [Algolia InstantSearch.js Widgets](https://www.algolia.com/doc/api-reference/widgets/js/)
+- [Next Generation Routing for React](https://www.npmjs.com/package/@reach/router) - React 17 => ERROR => import { useLocation } from "@reach/router"
+- [Location Data from Props](https://www.gatsbyjs.com/docs/location-data-from-props/)
+- [@reach/router and Gatsby](https://www.gatsbyjs.com/docs/reach-router-and-gatsby/)
+- [@gatsbyjs/reach-router ... THIS IS A FORK TO BE COMPATIBLE WITH REACT 17](https://www.npmjs.com/package/@gatsbyjs/reach-router?activeTab=readme)
 
 ---
 
