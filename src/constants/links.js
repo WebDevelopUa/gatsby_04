@@ -1,7 +1,13 @@
 import React from "react"
-import { FaCcStripe, FaCreditCard, FaAlipay } from "react-icons/fa"
+import { FaCreditCard, FaBuromobelexperte, FaCat, FaGulp } from "react-icons/fa"
 
 export default [
+  {
+    page: "products",
+    label: "new page",
+    url: `/products/new_page`,
+    icon: <FaCat className="icon" />,
+  },
   {
     page: "products",
     label: "payments",
@@ -30,30 +36,30 @@ export default [
     page: "developers",
     label: "documentation",
     url: `/developers/documentation`,
-    icon: <FaAlipay className="icon" />,
+    icon: <FaBuromobelexperte className="icon" />,
   },
   {
     page: "developers",
     label: "libraries",
     url: `/developers/libraries`,
-    icon: <FaAlipay className="icon" />,
+    icon: <FaBuromobelexperte className="icon" />,
   },
   {
     page: "developers",
     label: "plugins",
     url: `/developers/plugins`,
-    icon: <FaAlipay className="icon" />,
+    icon: <FaBuromobelexperte className="icon" />,
   },
   {
     page: "company",
     label: "jobs",
     url: `/company/jobs`,
-    icon: <FaCcStripe className="icon" />,
+    icon: <FaGulp className="icon" />,
   },
   {
     page: "company",
     label: "customers",
     url: `/company/customers`,
-    icon: <FaCcStripe className="icon" />,
+    icon: <FaGulp className="icon" />,
   },
 ]

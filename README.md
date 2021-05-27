@@ -439,6 +439,25 @@ export const Layout = ({ children }) => {
 
 ---
 
+# Pages
+
+1. To add `new page` to existing `products` category => edit file => [links.js](src/constants/links.js):
+
+```
+{
+  page: "products",
+  label: "new page",
+  url: `/products/new_page`,
+  icon: <FaCreditCard className="icon" />,
+},
+```
+
+2. Create page in existing folder `pages/products/` => [new_page.js](src/pages/products/new_page.js)
+
+3. Change [icon](https://react-icons.github.io/react-icons/icons?name=fa)
+
+---
+
 > Delete [package-lock.json](package-lock.json) before `run npm update`
 
 # Errors
