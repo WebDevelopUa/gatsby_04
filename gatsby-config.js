@@ -8,7 +8,7 @@ module.exports = {
     description: `Gatsby v3.5 Airtable Example. Built using Airtable, Algolia Search, Gatsby Background Image plugin and  React Context API. Containts two sliders, real-time Airtable updates and submenus. Styled using Styled-Components. `,
     author: `@xxx`,
     titleTemplate: `%s | Gatsby - Airtable`,
-    url: `https://gatsby-v3-airtable.netlify.app`,
+    url: `https://gatsby-v3-airtable.netlify.app/`,
     image: `mainBcg.png`,
     twitterUsername: `@xxx`,
   },

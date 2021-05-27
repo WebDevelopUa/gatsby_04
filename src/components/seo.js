@@ -1,8 +1,23 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useLocation } from '@gatsbyjs/reach-router'
+import { useLocation } from "@gatsbyjs/reach-router"
 import { useStaticQuery, graphql } from "gatsby"
+
+const query = graphql`
+  query Seo {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl: url
+        defaultImage: image
+        twitterUsername
+      }
+    }
+  }
+`
 
 const Seo = ({ title, description, image, article }) => {
   const { pathname } = useLocation()
@@ -73,18 +88,3 @@ Seo.defaultProps = {
   image: null,
   article: false,
 }
-
-const query = graphql`
-  query Seo {
-    site {
-      siteMetadata {
-        defaultTitle: title
-        titleTemplate
-        defaultDescription: description
-        siteUrl: url
-        defaultImage: image
-        twitterUsername
-      }
-    }
-  }
-`
