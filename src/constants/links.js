@@ -1,6 +1,7 @@
 import React from "react"
 import { FaCreditCard, FaBuromobelexperte, FaCat, FaGulp } from "react-icons/fa"
 
+/* eslint import/no-anonymous-default-export: [2, {"allowArray": true}] */
 export default [
   {
     page: "products",

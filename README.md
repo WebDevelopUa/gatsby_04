@@ -42,6 +42,7 @@
 - [Location Data from Props](https://www.gatsbyjs.com/docs/location-data-from-props/)
 - [@reach/router and Gatsby](https://www.gatsbyjs.com/docs/reach-router-and-gatsby/)
 - [@gatsbyjs/reach-router ... THIS IS A FORK TO BE COMPATIBLE WITH REACT 17](https://www.npmjs.com/package/@gatsbyjs/reach-router?activeTab=readme)
+- [import/no-anonymous-default-export](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-anonymous-default-export.md) - WARNING
 
 ---
 

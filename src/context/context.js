@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import sublinks from "../constants/links"
 
-export const GatsbyContext = React.createContext()
+export const GatsbyContext = React.createContext(undefined)
 
 export const GatsbyProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)

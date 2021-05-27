@@ -41,6 +41,7 @@ const Hero = ({ projects }) => {
         <div className="dots">
           {imagesAirtable.map((_, btnIndex) => (
             <span
+              aria-hidden="true"
               key={btnIndex}
               onClick={() => setIndex(btnIndex)}
               className={index === btnIndex ? `active` : undefined}
