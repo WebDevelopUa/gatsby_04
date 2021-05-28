@@ -18,6 +18,7 @@ const query = graphql`
 const Background = ({ children, image }) => {
   const data = useStaticQuery(query)
   const dataImage = data.file.childImageSharp.fluid
+  console.log(image)
 
   return (
     <Wrapper>

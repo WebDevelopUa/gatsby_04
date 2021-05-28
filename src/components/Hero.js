@@ -11,9 +11,12 @@ const Hero = ({ projects }) => {
         image: { localFiles },
       },
     } = item
-    return localFiles[0].childImageSharp.fluid
+
+    return localFiles[0].childImageSharp.gatsbyImageData.images.fallback
   })
+
   const [index, setIndex] = React.useState(0)
+
   React.useEffect(() => {
     const lastIndex = imagesAirtable.length - 1
     if (index < 0) {
