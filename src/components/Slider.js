@@ -2,7 +2,8 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Title from "./Title"
 import styled from "styled-components"
-import Image from "gatsby-image"
+// import Image from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FaQuoteRight } from "react-icons/fa"
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi"
 
@@ -10,15 +11,18 @@ const query = graphql`
   {
     allAirtable(filter: { table: { eq: "ReviewSection" } }) {
       nodes {
+        id
         data {
           title
           name
           image {
             localFiles {
               childImageSharp {
-                fixed(width: 150, height: 150) {
-                  ...GatsbyImageSharpFixed
-                }
+                gatsbyImageData(
+                  width: 200
+                  height: 200
+                  placeholder: TRACED_SVG
+                )
               }
             }
           }
@@ -57,7 +61,8 @@ const Slider = ({ title }) => {
           const {
             data: { title, name, quote, image },
           } = item
-          const fixedImage = image.localFiles[0].childImageSharp.fixed
+          // const fixedImage = image.localFiles[0].childImageSharp.fixed
+          const fixedImage = getImage(image.localFiles[0])
 
           let position = `nextSlide`
           if (itemIndex === index) {
@@ -72,7 +77,8 @@ const Slider = ({ title }) => {
 
           return (
             <article className={position} key={itemIndex}>
-              <Image fixed={fixedImage} className="img" />
+              {/*<Image fixed={fixedImage} className="img" />*/}
+              <GatsbyImage image={fixedImage} className="img" alt={name} />
               <p>{itemIndex}</p>
               <h4>{name}</h4>
               <p className="title">{title}</p>

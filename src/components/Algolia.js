@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Image from "gatsby-image"
+// import { GatsbyImage } from "gatsby-plugin-image"
 import Title from "./Title"
 import algoliasearch from "algoliasearch/lite"
 import { InstantSearch, SearchBox, connectHits } from "react-instantsearch-dom"
@@ -17,6 +18,7 @@ const NewHits = connectHits(({ hits }) => {
     return (
       <article key={objectID}>
         <Image fluid={image} className="img" />
+        {/*<GatsbyImage className="img" alt={name} image={image} />*/}
         <h4>{name}</h4>
       </article>
     )

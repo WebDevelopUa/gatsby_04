@@ -3,9 +3,10 @@ import { Link } from "gatsby"
 import Title from "./Title"
 import styled from "styled-components"
 import Image from "gatsby-image"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SearchButtons from "./SearchButtons"
 
-const Projects = ({ projects: data, title, page }) => {
+const Projects = ({ projects: data = [], title, page }) => {
   const [projects, setProjects] = React.useState(data)
 
   const setBackToAll = () => {
