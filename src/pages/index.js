@@ -10,7 +10,7 @@ import {
   Seo,
 } from "../components"
 
-// import { Projects } from "../components"
+import { Projects } from "../components"
 
 export const query = graphql`
   {
@@ -28,9 +28,7 @@ export const query = graphql`
           image {
             localFiles {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
               }
             }
           }
@@ -46,6 +44,7 @@ const HomePage = ({ data }) => {
   } = data
   const pageTitle = `Homepage`
   const aboutTitle = `About section`
+  const gridTitle = `Grid projects section`
   const projectsTitle = `Latest projects section`
   const sliderTitle = `Reviews section`
   const surveyTitle = `Survey section`
@@ -55,8 +54,8 @@ const HomePage = ({ data }) => {
       <Seo title={pageTitle} />
       <Hero projects={projects} />
       <About title={aboutTitle} />
-      {/*<Projects projects={projects} title={projectsTitle} />*/}
-      <GridProjects projects={projects} title={projectsTitle} />
+      <Projects projects={projects} title={projectsTitle} />
+      <GridProjects projects={projects} title={gridTitle} />
       <Survey title={surveyTitle} />
       <Slider title={sliderTitle} />
     </Layout>

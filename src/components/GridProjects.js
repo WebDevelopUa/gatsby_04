@@ -1,6 +1,7 @@
 import React from "react"
 import Title from "./Title"
-import Image from "gatsby-image"
+// import Image from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -12,11 +13,13 @@ const GridProjects = ({ title, projects }) => {
         {projects.map((project, index) => {
           const { id } = project
           const { name, type } = project.data
-          const fluid = project.data.image.localFiles[0].childImageSharp.fluid
+          // const fluid = project.data.image.localFiles[0].childImageSharp.fluid
+          const image = project.data.image.localFiles[0]
 
           return (
             <article key={id} className={`div-${index}`}>
-              <Image fluid={fluid} className="img" />
+              {/*<Image fluid={fluid} className="img" />*/}
+              <GatsbyImage image={getImage(image)} alt={name} className="img" />
               <div className="info">
                 <p>&ndash; {type} &ndash;</p>
                 <h3>{name}</h3>

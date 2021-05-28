@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import Title from "./Title"
 import styled from "styled-components"
-import Image from "gatsby-image"
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import Image from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SearchButtons from "./SearchButtons"
 
 const Projects = ({ projects: data = [], title, page }) => {
@@ -27,12 +27,18 @@ const Projects = ({ projects: data = [], title, page }) => {
         {projects.map(item => {
           const { id } = item
           const { name, type } = item.data
-          const fluid = item.data.image.localFiles[0].childImageSharp.fluid
+          // const fluid = project.data.image.localFiles[0].childImageSharp.fluid
+          const image = item.data.image.localFiles[0]
 
           return (
             <article key={id}>
               <div className="container">
-                <Image fluid={fluid} className="img" />
+                {/*<Image fluid={fluid} className="img" />*/}
+                <GatsbyImage
+                  image={getImage(image)}
+                  alt={name}
+                  className="img"
+                />
                 <div className="info">
                   <p>&ndash; {type} &ndash;</p>
                   <h3>{name}</h3>
